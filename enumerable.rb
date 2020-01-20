@@ -1,28 +1,38 @@
 module Enumerable
-    include Enumerable
     
     def my_each
-        yield
-
+        for i in 0..self.length-1
+            yield(self[i])
+        end
     end
 
         
     def my_each_with_index
-        yield
-        
+        for ind in 0..self.length-1
+            yield(self[ind],ind)
+        end
     end
 
     def my_select
-        yield
-
+        arr = []
+        for selected in my_each
+            yield(selected)
+            arr.push(selected)
+        end
     end
 
     def my_all
-        yield
-
+        res = true
+        for x in 0..self.length - 1
+            if yield(self[i])
+                res = true
+                break
+            end
+        end
     end
 
     def my_any
+        
         yield
 
     end
