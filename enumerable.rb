@@ -57,13 +57,25 @@ module Enumerable
         end
     end
 
-    def my_map
-        yield
-
+    def my_map(proc =  nil)
+        arry = []
+        for i in 0..self.length - 1
+            yield(i)
+            arr.push(i)
+        end
     end
 
     def my_inject
-        yield
-
+        for a in 0..self.length - 1
+            collection = self[0]
+            collection = yield(collection,num)
+        end
     end
+
+    #Testing for inject 
+
+    def multiply_els(arr)
+        arr.my_inject{|collection,num| collection*num}
+    end
+    puts multiply_els([2,4,5])
 end
