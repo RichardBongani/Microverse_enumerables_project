@@ -26,25 +26,35 @@ module Enumerable
         for x in 0..self.length - 1
             if yield(self[i])
                 res = true
-                break
             end
         end
     end
 
     def my_any
-        
-        yield
-
+        results = true
+        for x in 0..self.length - 1
+            if yield(x)
+                results = true
+            end
+        end
     end
 
     def my_none
-        yield
-
+        answer = true
+        for none in 0..self.length - 1
+            if yield(self[none])
+                answer = false
+            end
+        end
     end
 
     def my_count
-        yield
-
+        counter = 0
+        for item in 0..self.length - 1
+            if yield (item)
+                counter += 1
+            end
+        end
     end
 
     def my_map
